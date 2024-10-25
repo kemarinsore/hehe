@@ -1,6 +1,6 @@
 {
     "rewrites": [
-      { "source": "/", "destination": "/syarifah.html" }
+      { "source": "/", "destination": "/index.html" }
     ]
   }
   
