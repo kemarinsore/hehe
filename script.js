@@ -80,13 +80,13 @@ function calculate() {
             displayResult = currentTheme === 'dark' ? "halo intan" : "jadi sama sama jaga diri masing masing yaa <3";
             break;
         case '-':
-            displayResult = currentTheme === 'dark' ? "pasti kaget wkwk" : "okee sayang semangatt buat kamu buat kita berdua <3";
+            displayResult = currentTheme === 'dark' ? "pasti kaget wkwk" : "okee sayang semangatt buat kita berdua <3";
             break;
         case '*':
-            displayResult = currentTheme === 'dark' ? "jangan nakal nakal ya sayang" : "";
+            displayResult = currentTheme === 'dark' ? "jangan nakal nakal ya sayang" : "satu aja cukup kan wkwk";
             break;
         case '/':
-            displayResult = currentTheme === 'dark' ? "kita lagi ga satu kota sekarang" : "satu aja cukup kan wkwk";
+            displayResult = currentTheme === 'dark' ? "kita lagi ga satu kota sekarang" : "habis ini kamu pencet angka 3.9 trus pencet = di mode 2";
             break;
         default:
             displayResult = 'Error';
