@@ -4,7 +4,7 @@ let themeSwitch = document.getElementById('theme-switch');
 let currentNumber = '';
 let previousNumber = '';
 let operator = '';
-
+let currentTheme = 'dark';  // Default theme
 
 function appendNumber(number) {
     currentNumber += number;
@@ -21,17 +21,37 @@ function appendOperator(operatorSymbol) {
 function calculate() {
     let result;
 
-    // Pastikan angka dikonversi ke tipe numerik
     let num1 = parseFloat(previousNumber);
     let num2 = parseFloat(currentNumber);
 
-    // Cek jika ada input angka yang valid
+    // Pengecekan jika mode "light" dan angka "3.9" diinput
+    if (currentTheme === 'light' && num2 === 3.9) {
+        // Tampilkan modal
+        let modal = document.getElementById('myModal');
+        let span = document.getElementsByClassName('close')[0];
+
+        modal.style.display = 'block';
+
+        // Tutup modal ketika klik "x"
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        // Tutup modal ketika klik di luar modal
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+
+        return;  // Hentikan eksekusi lebih lanjut
+    }
+
     if (isNaN(num1) || isNaN(num2)) {
         output.textContent = 'Error';
         return;
     }
 
-    // Lakukan operasi matematika berdasarkan operator
     switch (operator) {
         case '+':
             result = num1 + num2;
@@ -54,34 +74,30 @@ function calculate() {
             return;
     }
 
-    // Ubah hasil berdasarkan tema yang aktif
     let displayResult;
     switch (operator) {
         case '+':
-            displayResult = currentTheme === 'dark' ? "halo intan" : "jangan suka nyebelin juga";
+            displayResult = currentTheme === 'dark' ? "halo intan" : "jadi sama sama jaga diri masing masing yaa <3";
             break;
         case '-':
-            displayResult = currentTheme === 'dark' ? "pasti kaget wkwk" : "kalo dibilangin nurut gausah ngeyel";
+            displayResult = currentTheme === 'dark' ? "pasti kaget wkwk" : "okee sayang semangatt buat kamu buat kita berdua <3";
             break;
         case '*':
-            displayResult = currentTheme === 'dark' ? "jangan suka ngilang ngilang apalagi sambil dnd" : "okee sayang semangatt";
+            displayResult = currentTheme === 'dark' ? "jangan nakal nakal ya sayang" : "";
             break;
         case '/':
-            displayResult = currentTheme === 'dark' ? "susah ntar aku nyariinnya" : "satu aja cukup kan wkwk";
+            displayResult = currentTheme === 'dark' ? "kita lagi ga satu kota sekarang" : "satu aja cukup kan wkwk";
             break;
         default:
             displayResult = 'Error';
     }
 
-    // Tampilkan hasil
     output.textContent = displayResult;
 
-    // Reset currentNumber dan previousNumber untuk input selanjutnya
     currentNumber = '';
     previousNumber = '';
     operator = '';
 }
-
 
 function clearDisplay() {
     currentNumber = '';
@@ -91,22 +107,14 @@ function clearDisplay() {
 }
 
 function deleteLast() {
-    // Periksa apakah ada angka yang terinput
     if (currentNumber.length > 0) {
         currentNumber = currentNumber.slice(0, -1);
-        output.textContent = currentNumber || '0';  // Tampilkan '0' jika input kosong
+        output.textContent = currentNumber || '0';
     }
 }
 
-let currentTheme = 'dark';  // Default theme
-
 function toggleTheme(selectedTheme) {
-    // Hapus semua tema yang mungkin sudah diterapkan
     document.body.classList.remove('theme-dark', 'theme-light');
-
-    // Terapkan tema baru berdasarkan pilihan radio button
     document.body.classList.add(`theme-${selectedTheme}`);
-    
-    // Perbarui status tema saat ini
     currentTheme = selectedTheme;
 }
