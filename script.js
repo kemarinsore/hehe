@@ -58,7 +58,7 @@ function calculate() {
     let displayResult;
     switch (operator) {
         case '+':
-            displayResult = currentTheme === 'dark' ? "halo cantik" : "jangan suka nyebelin juga";
+            displayResult = currentTheme === 'dark' ? "halo intan" : "jangan suka nyebelin juga";
             break;
         case '-':
             displayResult = currentTheme === 'dark' ? "pasti kaget wkwk" : "kalo dibilangin nurut gausah ngeyel";
